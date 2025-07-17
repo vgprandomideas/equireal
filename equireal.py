@@ -877,16 +877,18 @@ def show_tenant_form():
             with st.spinner("🤖 AI is analyzing your business..."):
                 risk_score = calculate_risk_score(business_data)
                 deal_terms = generate_deal_terms(business_data, risk_score)
-                risk_factors = generate_risk_explanation(business_data, risk_score)
                 proposal = create_deal_proposal(business_data, deal_terms)
                 
                 save_deal(business_data, deal_terms, proposal)
             
-            show_deal_results(business_data, deal_terms, proposal, risk_factors)
+            show_deal_results(business_data, deal_terms, proposal)
 
-def show_deal_results(business_data, deal_terms, proposal, risk_factors):
+def show_deal_results(business_data, deal_terms, proposal):
     """Display AI-generated deal terms"""
     st.success("✅ Your personalized deal terms are ready!")
+    
+    # Generate risk factors inside the function
+    risk_factors = generate_risk_explanation(business_data, deal_terms['risk_score'])
     
     col1, col2, col3, col4 = st.columns(4)
     

@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 """
 EquiReal Production Platform - COMPLETE Working Version
 AI-Powered Commercial Real Estate Platform
